@@ -11,6 +11,8 @@ Vue.config.productionTip = false
 //component imports
 const mainpage = () => import('./components/MainPage.vue')
 const roulettepage = () => import('./components/RoulettePage.vue')
+const gameBoardAndSpin = () => import('./components/GameBoardAndSpin.vue')
+const statsAndAction = () => import('./components/StatsAndAction.vue')
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
@@ -29,7 +31,15 @@ Vue.use(VueAxios, axios)
       component: mainpage,
     },
     {
-      path: '/roulettePage',
+      path: '/statsAndAction', //statistics and actions log
+      component: statsAndAction,
+    },
+    {
+      path: '/gameBoardAndSpin', //gameboard and spin timer
+      component: gameBoardAndSpin,
+    },
+    {
+      path: '/roulettePage', //all components in one page
       component: roulettepage,
     }
   ]

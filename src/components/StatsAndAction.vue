@@ -5,44 +5,33 @@
             <div class="stats col-sm-12">
                 <StatisticsBlock :key="renderKey" v-on:logged="handleLogged"></StatisticsBlock>
             </div>
-        </div>
-         <div class="row">
-            <div class="spinTimer col-sm-6">
-                <UpcomingSpin v-on:spinComplete="handleSpinComplete" v-on:logged="handleLogged"></UpcomingSpin>
-            </div>
-            <div class="spinHistory col-sm-6">
-                <SpinHistory :key="renderKey" v-on:logged="handleLogged"></SpinHistory>
-            </div>
-         </div>
-         <div class="row">
-            <div class="gameBoard col-sm-6">
-                <GameBoard :key="renderKey" v-on:logged="handleLogged"></GameBoard>
-            </div>
-            <div class="logEvents col-sm-6">
+            <div class="logEvents col-sm-12">
                 <LogEvents :key="loggedKey"></LogEvents>
             </div>
-         </div>
+        </div>
     </div>
 </template>
 <script>
 const APIInput = () => import('./APIInput.vue')
 const StatisticsBlock = () => import('./StatisticsBlock.vue')
-const UpcomingSpin = () => import('./UpcomingSpin.vue')
-const SpinHistory = () => import('./SpinHistory.vue')
 const LogEvents = () => import('./LogEvents.vue')
-const GameBoard = () => import('./Gameboard.vue')
+
+import globals from '../globalFunctions.js'
 
   export default {
     data: () => ({
-        //keys to rerender components
         renderKey: 0,
         loggedKey: 0,
+        loaded: false, //same idea as spin timer
     }),
     created: function(){
-        this.$store.commit("log", 'Roulette page was opened')
+        this.loaded = true
+        this.$store.commit("log", 'Stats and action page was opened')
+        globals.getNextSpin(this, false)
     },
     destroyed: function(){
-        this.$store.commit("log", 'Roulette page was closed')
+        this.$store.commit("log", 'Stats and action page was closed')
+        this.loaded = false
     },
     methods:{
         handleAPIChange: function(){
@@ -58,10 +47,7 @@ const GameBoard = () => import('./Gameboard.vue')
     components:  {
         APIInput,
         StatisticsBlock,
-        UpcomingSpin,
-        SpinHistory,
         LogEvents,
-        GameBoard,
 	},
   }
 </script>

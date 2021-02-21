@@ -15,10 +15,26 @@
         </v-list-item>
         <v-list-item link to="/roulettePage">
           <v-list-item-action>
+            <v-icon>mdi-blur-radial</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>All in one page</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link to="/gameBoardAndSpin">
+          <v-list-item-action>
             <v-icon>mdi-baby-face-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Roulette page</v-list-item-title>
+            <v-list-item-title>Gameboard and spin timer</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link to="/statsAndAction">
+          <v-list-item-action>
+            <v-icon>mdi-alert-box-outline</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Statistics and action log</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
